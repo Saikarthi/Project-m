@@ -8,6 +8,10 @@ public class Player : MonoBehaviour
 {
     public Rigidbody rb { get; private set; }
 
+
+
+    public Transform mainCameraTransform { get; private set; }  
+
     public PlayerInput input { get; private set; }
 
     public PlayerMovementStateMachine movementStateMachine;
@@ -15,6 +19,7 @@ public class Player : MonoBehaviour
     {
         input = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
+        mainCameraTransform = Camera.main.transform ;
 
         movementStateMachine = new PlayerMovementStateMachine(this);
     }
