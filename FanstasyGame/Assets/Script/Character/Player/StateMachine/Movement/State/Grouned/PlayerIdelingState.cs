@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerIdelingState : PlayerMovementState
+public class PlayerIdelingState : PlayerGroundState
 {
     public PlayerIdelingState(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
     {
@@ -11,7 +13,21 @@ public class PlayerIdelingState : PlayerMovementState
     public override void Entry()
     {
         base.Entry();
-        speedModifer= 0;
+
+        stateMachine.Reusabledata.MovementSpeedModifier = 0;
+
         ResetVelocity();
     }
+
+    public override void Update()
+    {
+        base.Update();
+
+        if(stateMachine.Reusabledata.MovementInput == Vector2.zero)
+        return; 
+
+        OnMove();
+    }
+
+
 }

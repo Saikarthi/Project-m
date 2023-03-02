@@ -6,9 +6,10 @@ using UnityEngine.Windows;
 [RequireComponent(typeof(PlayerInput))]
 public class Player : MonoBehaviour
 {
+    [field: Header("References")]
+    [field: SerializeField]public PlayerSO Data { get; private set; }
+
     public Rigidbody rb { get; private set; }
-
-
 
     public Transform mainCameraTransform { get; private set; }  
 

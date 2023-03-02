@@ -8,7 +8,7 @@ public abstract class StateMachine
 
     public void ChangeState(IState state)
     {
-        currentState?.Exit();
+        currentState?.Exit ();
 
         currentState = state;
 
