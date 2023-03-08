@@ -138,6 +138,10 @@ public class PlayerMovementState : IState
     {
         return new Vector3(stateMachine.Reusabledata.MovementInput.x, 0, stateMachine.Reusabledata.MovementInput.y);
     }
+    protected Vector3 GetPlayerVerticalVelocity()
+    {
+        return new Vector3(0,stateMachine.player.rb.velocity.y ,0 );
+    }
     protected float GetMovementSpeed()
     {
         return MovementData.BaseSpeed * stateMachine.Reusabledata.MovementSpeedModifier;

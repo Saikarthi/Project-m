@@ -9,6 +9,10 @@ public class Player : MonoBehaviour
     [field: Header("References")]
     [field: SerializeField]public PlayerSO Data { get; private set; }
 
+    [field: Header("Collision")]
+    [field: SerializeField]public CapsulecColliderUtility ColliderUtility { get; private set; }
+    [field: SerializeField]public PlayerLayerData LayerData { get; private set; }
+
     public Rigidbody rb { get; private set; }
 
     public Transform mainCameraTransform { get; private set; }  
@@ -20,9 +24,19 @@ public class Player : MonoBehaviour
     {
         input = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
+
+        ColliderUtility.Initialize(gameObject);
+        ColliderUtility.CalculateCapsuleColliderDimensions();
+
         mainCameraTransform = Camera.main.transform ;
 
         movementStateMachine = new PlayerMovementStateMachine(this);
+    }
+
+    public void OnValidate()
+    {
+        ColliderUtility.Initialize(gameObject);
+        ColliderUtility.CalculateCapsuleColliderDimensions();
     }
     void Start()
     {
