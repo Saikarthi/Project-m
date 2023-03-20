@@ -28,4 +28,8 @@ public abstract class StateMachine
     {
         currentState?.PhysicsUpdate();
     }
+    public void OnTriggerEnter(Collider collider)
+    {
+        currentState?.OnTriggerEnter(collider);
+    }
 }

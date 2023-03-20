@@ -9,11 +9,13 @@ public class PlayerMovementState : IState
 {
     protected PlayerMovementStateMachine stateMachine;
     protected PlayerGrounedData MovementData;
+    protected PlayerAirBroneData AirBroneData;
 
     public PlayerMovementState(PlayerMovementStateMachine playerMovementStateMachine)
     {
         stateMachine = playerMovementStateMachine;
         MovementData = stateMachine.player.Data.GrounedData;
+        AirBroneData = stateMachine.player.Data.AirBroneData;
         InitializeData();
         
     }
@@ -54,6 +56,16 @@ public class PlayerMovementState : IState
     {
 
     }
+
+    public virtual void OnTriggerEnter(Collider collider)
+    {
+        if(stateMachine.player.LayerData.IsGroundLayer(collider.gameObject.layer)) 
+        {
+            OnContactWithGround(collider);
+            return;
+        }
+    }
+
     #endregion
 
     #region Main Function
@@ -101,6 +113,7 @@ public class PlayerMovementState : IState
         stateMachine.Reusabledata.DampedTargetRotationPassedTime.y = 0f;
     }
 
+    
     private float AddCameraRoataion2Angle(float angle)
     {
         angle += stateMachine.player.mainCameraTransform.eulerAngles.y;
@@ -187,6 +200,13 @@ public class PlayerMovementState : IState
         stateMachine.player.input.playerActions.Sprint.started -= OnSprintToggleStarted;
         stateMachine.player.input.playerActions.Sprint.canceled -= OnSprintToggleEnded; //Mine
     }
+
+
+    protected void DecelerateVertically()
+    {
+        Vector3 PlayerVelocity = GetPlayerVerticalVelocity();
+        stateMachine.player.rb.AddForce(-PlayerVelocity * AirBroneData.JumpData.JumpUpDecelerate);
+    }
     #endregion
     #region InputMethod
 
@@ -197,6 +217,11 @@ public class PlayerMovementState : IState
     private void OnSprintToggleEnded(InputAction.CallbackContext obj) //Mine
     {
         stateMachine.Reusabledata.ShouldSprint = false;
-    } 
+    }
+
+    public virtual void OnContactWithGround(Collider Colllider)
+    { 
+        
+    }
     #endregion
 }

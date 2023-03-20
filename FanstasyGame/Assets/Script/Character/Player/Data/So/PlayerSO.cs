@@ -9,4 +9,8 @@ public class PlayerSO : ScriptableObject
     {
         get; private set;
     }
+    [field: SerializeField]public PlayerAirBroneData AirBroneData
+    {
+        get; private set;
+    }
 }

@@ -14,6 +14,7 @@ public class PlayerSprintingState : PlayerMoveingState
         base.Entry();
 
         stateMachine.Reusabledata.MovementSpeedModifier = MovementData.BaseSprintingData.SpeedModifer;
+        stateMachine.Reusabledata.CurrentJumpForce = AirBroneData.JumpData.StrongForce;
 
     }
 

@@ -51,6 +51,10 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         movementStateMachine.PhysicsUpdate();
+    }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        movementStateMachine.OnTriggerEnter(other);
     }
 }

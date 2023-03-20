@@ -20,3 +20,10 @@ MonoBehaviour:
       <SpeedModifer>k__BackingField: 1
     <BaseSprintingData>k__BackingField:
       <SpeedModifer>k__BackingField: 2
+  <AirBroneData>k__BackingField:
+    <JumpData>k__BackingField:
+      <RotationData>k__BackingField:
+        <TargetRotationReachTime>k__BackingField: {x: 0, y: 0.02, z: 0}
+      <StationaryForce>k__BackingField: {x: 0, y: 1.8, z: 0}
+      <MediumForce>k__BackingField: {x: 1, y: 2, z: 1}
+      <StrongForce>k__BackingField: {x: 2, y: 2.2, z: 2}

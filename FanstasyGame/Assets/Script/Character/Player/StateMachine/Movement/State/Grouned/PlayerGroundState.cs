@@ -25,7 +25,6 @@ public class PlayerGroundState : PlayerMovementState
     private void FloatCapsule()
     {
         Vector3 capsuleColliderCentreInWorldSpace = stateMachine.player.ColliderUtility.CapsuleColliderData.Collider.bounds.center;
-        Debug.Log("R");
         Ray downwardRayFromCapsuleCentre = new Ray(capsuleColliderCentreInWorldSpace, Vector3.down);
         if(Physics.Raycast(downwardRayFromCapsuleCentre,out RaycastHit hit, slopeData.floatRayDistance,stateMachine.player.LayerData.groundLayer))
         {
@@ -45,7 +44,14 @@ public class PlayerGroundState : PlayerMovementState
     {
         base.AddInputActionCallback();
         stateMachine.player.input.playerActions.Movement.canceled += OnMovenmentCanceled;
+        stateMachine.player.input.playerActions.Jump.started += OnJumpStarted;
     }
+
+    private void OnJumpStarted(InputAction.CallbackContext obj)
+    {
+        stateMachine.ChangeState(stateMachine.jumpingState);
+    }
+
     protected override void RemoveInputActionCallBack()
     {
         base.RemoveInputActionCallBack();
@@ -64,7 +70,6 @@ public class PlayerGroundState : PlayerMovementState
             stateMachine.ChangeState(stateMachine.sprintingState);
             return;
         }
-        Debug.Log("test");
         stateMachine.ChangeState(stateMachine.walkingState);
     }
 }

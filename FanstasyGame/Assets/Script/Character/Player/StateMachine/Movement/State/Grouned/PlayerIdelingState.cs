@@ -15,6 +15,8 @@ public class PlayerIdelingState : PlayerGroundState
         base.Entry();
 
         stateMachine.Reusabledata.MovementSpeedModifier = 0;
+        stateMachine.Reusabledata.CurrentJumpForce = AirBroneData.JumpData.StationaryForce;
+
 
         ResetVelocity();
     }

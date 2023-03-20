@@ -11,6 +11,7 @@ public class PlayerMovementStateMachine : StateMachine
     public PlayerIdelingState idelingState { get; }
     public PlayerWalkingState walkingState { get; }
     public PlayerSprintingState sprintingState { get; }
+    public PlayerJumpingState jumpingState { get; }
 
     public PlayerMovementStateMachine(Player _player)
     {
@@ -22,6 +23,8 @@ public class PlayerMovementStateMachine : StateMachine
         walkingState= new PlayerWalkingState(this);
 
         sprintingState= new PlayerSprintingState(this);
+
+        jumpingState = new PlayerJumpingState(this);
     }
 
 }
