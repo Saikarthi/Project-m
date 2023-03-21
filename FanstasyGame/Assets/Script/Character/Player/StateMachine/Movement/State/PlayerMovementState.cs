@@ -155,6 +155,12 @@ public class PlayerMovementState : IState
     {
         return new Vector3(0,stateMachine.player.rb.velocity.y ,0 );
     }
+    protected Vector3 GetPlayerHorizontalVelocity()
+    {
+        Vector3 temp = stateMachine.player.rb.velocity;
+        temp.y = 0;
+        return temp;
+    }
     protected float GetMovementSpeed()
     {
         return MovementData.BaseSpeed * stateMachine.Reusabledata.MovementSpeedModifier;
@@ -223,5 +229,21 @@ public class PlayerMovementState : IState
     { 
         
     }
+
+    public virtual void OnAnimationEntryEvent()
+    {
+
+    }
+
+    public virtual void OnAnimationExitEvent()
+    {
+    }
+
+    public virtual void OnAnimationTrantionEvent()
+    {
+    }
+
+    
+
     #endregion
 }

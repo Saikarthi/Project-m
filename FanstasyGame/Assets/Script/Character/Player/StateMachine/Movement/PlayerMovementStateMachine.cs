@@ -12,6 +12,8 @@ public class PlayerMovementStateMachine : StateMachine
     public PlayerWalkingState walkingState { get; }
     public PlayerSprintingState sprintingState { get; }
     public PlayerJumpingState jumpingState { get; }
+    public PlayerMediumStopingState mediumStopingState { get; }
+    public PlayerHardStopingState hardStopingState { get; }
 
     public PlayerMovementStateMachine(Player _player)
     {
@@ -25,6 +27,10 @@ public class PlayerMovementStateMachine : StateMachine
         sprintingState= new PlayerSprintingState(this);
 
         jumpingState = new PlayerJumpingState(this);
+
+
+        mediumStopingState = new PlayerMediumStopingState(this) ;
+        hardStopingState = new PlayerHardStopingState(this);
     }
 
 }

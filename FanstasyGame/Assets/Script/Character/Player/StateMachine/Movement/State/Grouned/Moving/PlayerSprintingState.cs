@@ -26,11 +26,18 @@ public class PlayerSprintingState : PlayerMoveingState
         if (stateMachine.Reusabledata.ShouldSprint == true)
             return;
 
-        OnSprint(); //Mine
+        OnWalk(); //Mine
     }
     #endregion
-    private void OnSprint() //mine
+    private void OnWalk() //mine
     {
         stateMachine.ChangeState(stateMachine.walkingState);
     }
+    #region Input
+    protected override void OnMovenmentCanceled(InputAction.CallbackContext obj)
+    {
+        stateMachine.ChangeState(stateMachine.hardStopingState);
+    }
+
+    #endregion
 }

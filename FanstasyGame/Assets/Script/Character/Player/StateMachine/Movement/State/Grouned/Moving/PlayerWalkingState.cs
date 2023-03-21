@@ -34,6 +34,12 @@ public class PlayerWalkingState : PlayerMoveingState
     }
     #endregion
 
+    #region Input
+    protected override void OnMovenmentCanceled(InputAction.CallbackContext obj)
+    {
+        stateMachine.ChangeState(stateMachine.mediumStopingState);
+    }
 
+    #endregion
 
 }

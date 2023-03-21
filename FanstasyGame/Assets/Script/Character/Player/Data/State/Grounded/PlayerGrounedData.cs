@@ -9,5 +9,6 @@ public class PlayerGrounedData
     [field: SerializeField] public PlayerRotationData BaseRotationData { get; private set; }
     [field: SerializeField] public PlayerWalkData BaseWalkData { get; private set; } 
     [field: SerializeField] public PlayerSprintingData BaseSprintingData { get; private set; } 
+    [field: SerializeField] public PlayerStopingData StopingData { get; private set; } 
 
 }

@@ -4,6 +4,7 @@ public class PlayerStateReusabledata
 {
     public Vector2 MovementInput { get; set; }
     public float MovementSpeedModifier { get; set; } = 1f;
+    public float MovementDecelrationForce { get; set; } = 1f;
 
     public bool ShouldSprint { get; set; }
 
