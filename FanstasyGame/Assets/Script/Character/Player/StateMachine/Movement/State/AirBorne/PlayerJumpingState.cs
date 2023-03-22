@@ -22,6 +22,14 @@ public class PlayerJumpingState : PlayerAirBorneState
         ShouldKeepRotating = stateMachine.Reusabledata.MovementInput != Vector2.zero;
         //video No 15  38:03
         Jump();
+
+        StartAndStopAnimation(stateMachine.player.AnimationData.JumpParameterHash, true);
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+        StartAndStopAnimation(stateMachine.player.AnimationData.JumpParameterHash, true);
     }
 
     public override void PhysicsUpdate()
@@ -43,10 +51,6 @@ public class PlayerJumpingState : PlayerAirBorneState
         return GetPlayerVerticalVelocity().y> minimum;
     }
 
-    public override void Exit()
-    {
-        base.Exit();
-    }
 
     #endregion
 
@@ -55,6 +59,7 @@ public class PlayerJumpingState : PlayerAirBorneState
     private void Jump()
     {
         Vector3 jumpForce = stateMachine.Reusabledata.CurrentJumpForce;
+        Debug.Log("current Force: " + jumpForce);
 
         Vector3 jumpDirection = stateMachine.player.transform.forward;
 
@@ -71,6 +76,7 @@ public class PlayerJumpingState : PlayerAirBorneState
         
         stateMachine.player.rb.AddForce(jumpForce, ForceMode.VelocityChange);
 
-    } 
+    }
     #endregion
+
 }

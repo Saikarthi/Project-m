@@ -12,5 +12,7 @@ public class PlayerMediumStopingState : PlayerStopIngState
     {
         base.Entry();
         stateMachine.Reusabledata.MovementDecelrationForce = MovementData.StopingData.MediumForce;
+        // no animition Bool For it Because of the state machine 
+
     }
 }

@@ -12,8 +12,10 @@ public class Player : MonoBehaviour
     [field: Header("Collision")]
     [field: SerializeField]public CapsulecColliderUtility ColliderUtility { get; private set; }
     [field: SerializeField]public PlayerLayerData LayerData { get; private set; }
+    [field: SerializeField]public PlayeraAnimationData AnimationData { get; private set; }
 
     public Rigidbody rb { get; private set; }
+    public Animator animator { get; private set; }
 
     public Transform mainCameraTransform { get; private set; }  
 
@@ -28,9 +30,14 @@ public class Player : MonoBehaviour
         ColliderUtility.Initialize(gameObject);
         ColliderUtility.CalculateCapsuleColliderDimensions();
 
-        mainCameraTransform = Camera.main.transform ;
+        AnimationData.Initialize();
+
+        mainCameraTransform = Camera.main.transform;
 
         movementStateMachine = new PlayerMovementStateMachine(this);
+
+        animator = GetComponentInChildren<Animator>();
+
     }
 
     public void OnValidate()

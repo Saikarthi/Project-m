@@ -16,8 +16,15 @@ public class PlayerWalkingState : PlayerMoveingState
 
         stateMachine.Reusabledata.MovementSpeedModifier = MovementData.BaseWalkData.SpeedModifer;
         stateMachine.Reusabledata.CurrentJumpForce = AirBroneData.JumpData.MediumForce;
+
+        StartAndStopAnimation(stateMachine.player.AnimationData.WalkParameterHash, true);
     }
 
+    public override void Exit()
+    {
+        base.Exit();
+        StartAndStopAnimation(stateMachine.player.AnimationData.WalkParameterHash, false);
+    }
     public override void Update()
     {
         base.Update();

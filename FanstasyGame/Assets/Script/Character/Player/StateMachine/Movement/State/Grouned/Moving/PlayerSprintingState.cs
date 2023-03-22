@@ -16,8 +16,15 @@ public class PlayerSprintingState : PlayerMoveingState
         stateMachine.Reusabledata.MovementSpeedModifier = MovementData.BaseSprintingData.SpeedModifer;
         stateMachine.Reusabledata.CurrentJumpForce = AirBroneData.JumpData.StrongForce;
 
+        StartAndStopAnimation(stateMachine.player.AnimationData.SprintParameterHash, true);
+
     }
 
+    public override void Exit()
+    {
+        base.Exit();
+        StartAndStopAnimation(stateMachine.player.AnimationData.SprintParameterHash, false);
+    }
     #region Istate Methods
     public override void Update()
     {

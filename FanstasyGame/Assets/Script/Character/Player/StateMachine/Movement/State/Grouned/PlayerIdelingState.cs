@@ -19,8 +19,16 @@ public class PlayerIdelingState : PlayerGroundState
 
 
         ResetVelocity();
+
+        StartAndStopAnimation(stateMachine.player.AnimationData.IdelParameterHash, true);
+
     }
 
+    public override void Exit()
+    {
+        base.Exit();
+        StartAndStopAnimation(stateMachine.player.AnimationData.IdelParameterHash, false);
+    }
     public override void Update()
     {
         base.Update();

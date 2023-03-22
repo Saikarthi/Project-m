@@ -8,6 +8,20 @@ public class PlayerAirBorneState : PlayerMovementState
     {
     }
 
+
+    public override void Entry()
+    {
+        base.Entry();
+
+        StartAndStopAnimation(stateMachine.player.AnimationData.AirBroneParameterHash, true);
+    }
+    public override void Exit()
+    {
+        base.Exit();
+
+        StartAndStopAnimation(stateMachine.player.AnimationData.AirBroneParameterHash, false);
+    }
+
     public override void OnContactWithGround(Collider Colllider)
     {
         stateMachine.ChangeState(stateMachine.idelingState);

@@ -16,7 +16,13 @@ public class PlayerStopIngState : PlayerGroundState
     {
         base.Entry();
         stateMachine.Reusabledata.MovementSpeedModifier = 0;
+        StartAndStopAnimation(stateMachine.player.AnimationData.StopingParameterHash, true);
 
+    }
+    public override void Exit()
+    {
+        base.Exit();
+        StartAndStopAnimation(stateMachine.player.AnimationData.StopingParameterHash, false);
     }
 
     public override void PhysicsUpdate()

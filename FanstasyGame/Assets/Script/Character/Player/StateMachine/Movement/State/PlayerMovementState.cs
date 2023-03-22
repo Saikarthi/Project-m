@@ -213,7 +213,14 @@ public class PlayerMovementState : IState
         Vector3 PlayerVelocity = GetPlayerVerticalVelocity();
         stateMachine.player.rb.AddForce(-PlayerVelocity * AirBroneData.JumpData.JumpUpDecelerate);
     }
+
+
+    protected void StartAndStopAnimation(int animationHash,bool Start_Or_Stop)
+    {
+        stateMachine.player?.animator.SetBool(animationHash, Start_Or_Stop);
+    }
     #endregion
+
     #region InputMethod
 
     private void OnSprintToggleStarted(InputAction.CallbackContext obj)

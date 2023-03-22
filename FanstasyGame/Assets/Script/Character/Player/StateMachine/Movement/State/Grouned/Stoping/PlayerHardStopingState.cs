@@ -11,5 +11,12 @@ public class PlayerHardStopingState : PlayerStopIngState
     {
         base.Entry();
         stateMachine.Reusabledata.MovementDecelrationForce = MovementData.StopingData.HardForce;
+        StartAndStopAnimation(stateMachine.player.AnimationData.HardStopingParameterHash, true);
+
+    }
+    public override void Exit()
+    {
+        base.Exit();
+        StartAndStopAnimation(stateMachine.player.AnimationData.HardStopingParameterHash, false);
     }
 }

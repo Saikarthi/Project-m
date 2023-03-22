@@ -15,6 +15,18 @@ public class PlayerGroundState : PlayerMovementState
     }
     #region Main Methode
 
+    public override void Entry()
+    {
+        base.Entry();
+        StartAndStopAnimation(stateMachine.player.AnimationData.GrounedParameterHash,true);
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+        StartAndStopAnimation(stateMachine.player.AnimationData.GrounedParameterHash, false);
+    }
+
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
@@ -56,7 +68,7 @@ public class PlayerGroundState : PlayerMovementState
     {
         base.RemoveInputActionCallBack();
         stateMachine.player.input.playerActions.Movement.canceled -= OnMovenmentCanceled;
-
+        stateMachine.player.input.playerActions.Jump.started -= OnJumpStarted;
     } 
     #endregion
     protected virtual void OnMovenmentCanceled(InputAction.CallbackContext obj)
