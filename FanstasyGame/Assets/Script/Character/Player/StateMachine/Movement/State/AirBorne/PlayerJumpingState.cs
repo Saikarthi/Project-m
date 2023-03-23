@@ -29,7 +29,7 @@ public class PlayerJumpingState : PlayerAirBorneState
     public override void Exit()
     {
         base.Exit();
-        StartAndStopAnimation(stateMachine.player.AnimationData.JumpParameterHash, true);
+        StartAndStopAnimation(stateMachine.player.AnimationData.JumpParameterHash, false);
     }
 
     public override void PhysicsUpdate()
