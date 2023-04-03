@@ -18,7 +18,6 @@ public class PlayerGroundState : PlayerMovementState
     public override void Entry()
     {
         base.Entry();
-        Debug.Log("run");
         StartAndStopAnimation(stateMachine.player.AnimationData.GrounedParameterHash,true);
     }
 

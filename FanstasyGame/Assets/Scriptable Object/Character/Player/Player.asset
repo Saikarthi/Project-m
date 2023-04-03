@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Player
   m_EditorClassIdentifier: 
   <GrounedData>k__BackingField:
-    <BaseSpeed>k__BackingField: 5
+    <BaseSpeed>k__BackingField: 3.5
     <BaseRotationData>k__BackingField:
       <TargetRotationReachTime>k__BackingField: {x: 0, y: 0.14, z: 0}
     <BaseWalkData>k__BackingField:
       <SpeedModifer>k__BackingField: 1
     <BaseSprintingData>k__BackingField:
-      <SpeedModifer>k__BackingField: 2
+      <SpeedModifer>k__BackingField: 1.5
     <StopingData>k__BackingField:
       <MediumForce>k__BackingField: 50
       <HardForce>k__BackingField: 80

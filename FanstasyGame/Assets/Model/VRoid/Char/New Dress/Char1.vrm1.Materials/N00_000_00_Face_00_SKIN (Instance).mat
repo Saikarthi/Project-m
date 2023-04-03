@@ -58,5 +58,5 @@ Material:
     - _EmissionMapChannelMask: {r: 1, g: 1, b: 1, a: 1}
     - _IndirectLightConstColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _OutlineColor: {r: 0.27450976, g: 0.09019602, b: 0.12549013, a: 1}
-    - _ShadeColor: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 1}
+    - _ShadeColor: {r: 0.9622642, g: 0.9622642, b: 0.9622642, a: 1}
   m_BuildTextureStacks: []
